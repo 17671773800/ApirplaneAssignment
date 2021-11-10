@@ -17,9 +17,9 @@ public class Airport {
 
 
     public void processInGate(Airplane airplane) {
-        System.out.println("Thread-ATC : "+getDate()+"Disembark passenger of Airplane : " + airplane.getNum());
-        System.out.println("Thread-ATC : "+getDate()+"Refill supplies and fuel of Airplane : " + airplane.getNum());
-        System.out.println("Thread-ATC : "+getDate()+"embark new passenger of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" Disembark passenger of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" Refill supplies and fuel of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" embark new passenger of Airplane : " + airplane.getNum());
         System.out.println("---------------------------------------------------------------------------------------------------");
         long duration = (long) (Math.random() * 60);
 
@@ -28,9 +28,9 @@ public class Airport {
         } catch (InterruptedException iex) {
             iex.printStackTrace();
         }
-        System.out.println("Thread-ATC : "+getDate()+"Completed Disembark passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
-        System.out.println("Thread-ATC : "+getDate()+"Completed Refill supplies of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
-        System.out.println("Thread-ATC : "+getDate()+"Completed embark new passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+        System.out.println("Thread-ATC : "+getDate()+" Completed Disembark passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+        System.out.println("Thread-ATC : "+getDate()+" Completed Refill supplies of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+        System.out.println("Thread-ATC : "+getDate()+" Completed embark new passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
 //        System.out.println("------------------------Customer exits from airplane " + airplane.getNum() + " ...");
 
         System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+"位乘客下了飞机");
@@ -46,7 +46,7 @@ public class Airport {
 
             synchronized (listAirplaneGate) {
                 try {
-                    System.out.println("Thread-ATC : "+getDate()+"The Gate is occupied, Airplane : " + airplane.getNum() + " waiting for Gate.");
+                    System.out.println("Thread-ATC : "+getDate()+" The Gate is occupied, Airplane : " + airplane.getNum() + " waiting for Gate.");
                     listAirplaneGate.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -56,7 +56,7 @@ public class Airport {
         }
 
         listAirplaneGate.add(airplane);
-        System.out.println("Airplane : " + airplane.getNum() + " got the Gate. Gate(" + listAirplaneGate.size() + "/4)");
+        System.out.println("Thread-ATC : "+getDate()+" Airplane : " + airplane.getNum() + " got the Gate. Gate(" + listAirplaneGate.size() + "/4)");
         listAirplaneRunway.remove(airplane);
 
         try {
@@ -104,7 +104,7 @@ public class Airport {
             iex.printStackTrace();
         }
 
-        System.out.println("Thread-ATC : "+getDate()+"entering the runway -- Airplane : " + airplane.getNum() + "  at " + getDate());
+        System.out.println("Thread-ATC : "+getDate()+" entering the runway -- Airplane : " + airplane.getNum() + "  at " + getDate());
 
 
     }
@@ -115,7 +115,7 @@ public class Airport {
 
             synchronized (listAirplaneRunway) {
                 try {
-                    System.out.println("Thread-ATC : "+getDate()+"The plane can't leave from Gate!The runway is occupied, Airplane : " + airplane.getNum() + " waiting for Runway.");
+                    System.out.println("Thread-ATC : "+getDate()+" The plane can't leave from Gate!The runway is occupied, Airplane : " + airplane.getNum() + " waiting for Runway.");
                     listAirplaneRunway.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -126,14 +126,14 @@ public class Airport {
 
         listAirplaneRunway.add(airplane);
         listAirplaneGate.remove(airplane);
-        System.out.println("Thread-ATC : "+getDate()+"------------------------ airplane NUMBER:" + airplane.getNum() + " exits Gate... Gate(" + listAirplaneGate.size() + "/4)");
-        System.out.println("Thread-ATC : "+getDate()+"entering the runway -- Airplane : " + airplane.getNum() + " from Gate  at " + getDate());
+        System.out.println("Thread-ATC : "+getDate()+" ------------------------ airplane NUMBER:" + airplane.getNum() + " exits Gate... Gate(" + listAirplaneGate.size() + "/4)");
+        System.out.println("Thread-ATC : "+getDate()+" entering the runway -- Airplane : " + airplane.getNum() + " from Gate  at " + getDate());
 
-        System.out.println("Thread-ATC : "+getDate()+"---------The plane" + airplane.getNum() + " is leaving the runway!----------");
+        System.out.println("Thread-ATC : "+getDate()+" ---------The plane" + airplane.getNum() + " is leaving the runway!----------");
 
 
         listAirplaneRunway.remove(airplane);
-        System.out.println("Thread-ATC : "+getDate()+"---------The plane" + airplane.getNum() + " is left the runway success!----------");
+        System.out.println("Thread-ATC : "+getDate()+" ---------The plane" + airplane.getNum() + " is left the runway success!----------");
 
         try {
             Thread.sleep((long) (Math.random() * 60));
