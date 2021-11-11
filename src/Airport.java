@@ -27,12 +27,12 @@ public class Airport {
         System.out.println("Thread-ATC : "+getDate()+" Refill supplies and fuel of Airplane : " + airplane.getNum());
         duration = (long) (Math.random() * 2000);
         sleep(duration);
-        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed Refill supplies of Customer : " + airplane.getNum() + " in " + duration + " millisecond.");
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed Refill supplies of Customer in " + duration + " millisecond.");
 
-        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" embark new passenger of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" embark new passenger of Airplane ");
         duration = (long) (Math.random() * 2000);
         sleep(duration);
-        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed embark new passenger of Customer : " + airplane.getNum() + " in " + duration + " millisecond.");
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed embark new passenger of Customer in " + duration + " millisecond.");
 
         System.out.println("---------------------------------------------------------------------------------------------------");
 
