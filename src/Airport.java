@@ -39,8 +39,8 @@ public class Airport {
         sleep(1000);
 //        System.out.println("------------------------Customer exits from airplane " + airplane.getNum() + " ...");
 
-        System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+"位乘客下了飞机");
-        System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+"位乘客登录上了飞机");
+        System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+" passengers disembarked from the plane");
+        System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+" passengers boarded the plane");
         System.out.println("---------------------------------------------------------------------------------------------------");
 
     }
@@ -79,11 +79,6 @@ public class Airport {
 
             synchronized (listAirplaneRunway) {
                 try {
-//                    if(listAirplaneGate.size() >= 4){
-//                        System.out.println("All the Gate is occupied, Airplane : " + airplane.getNum() + " don't into Runway.");
-//                    }else if(listAirplaneRunway.size() >= 1 ){
-//                        System.out.println("The runway is occupied, Airplane : " + airplane.getNum() + " waiting for Runway.");
-//                    }
                     System.out.println("ATC: Please Airplane " + airplane.getNum() +  " wait and join the circle queue. ");
 
                     listAirplaneRunway.wait();
@@ -95,9 +90,9 @@ public class Airport {
         }
 
 
-        System.out.println("ATC: 允许Airplane "+ airplane.getNum() + "降落runway");
+        System.out.println("ATC: allow Airplane "+ airplane.getNum() + "landing runway");
         listAirplaneRunway.add(airplane);
-        System.out.println("ATC: Airplane "+ airplane.getNum() + "降落runway成功!");
+        System.out.println("ATC: Airplane "+ airplane.getNum() + "landing runway success!");
         listAirplane.remove(airplane);
 
         sleep(1000);
