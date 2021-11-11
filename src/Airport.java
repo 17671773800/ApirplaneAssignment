@@ -20,11 +20,11 @@ public class Airport {
     public void processInGate(Airplane airplane) {
         long duration = (long) (Math.random() * 2000);
 
-        System.out.println("Thread-ATC : "+getDate()+" Disembark passenger of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Disembark passenger of Airplane ");
         sleep(duration);
-        System.out.println("Thread-ATC : "+getDate()+" Completed Disembark passenger of Customer : " + airplane.getNum() + " in " + duration + " millisecond.");
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed Disembark passenger of Customer in " + duration + " millisecond.");
 
-        System.out.println("Thread-ATC : "+getDate()+" Refill supplies and fuel of Airplane : " + airplane.getNum());
+        System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Refill supplies and fuel of Airplane ");
         duration = (long) (Math.random() * 2000);
         sleep(duration);
         System.out.println("Thread-ATC : "+getDate()+" Airplane "+airplane.getNum()+" Completed Refill supplies of Customer in " + duration + " millisecond.");
