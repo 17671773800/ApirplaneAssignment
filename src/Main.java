@@ -18,13 +18,13 @@ public class Main {
             airport.listAirplane.add(airplane);
             thAirplane.start();
 
-//            try {
-//                // airplane into time
-//                TimeUnit.SECONDS.sleep((long) (Math.random() * 20));
-//
-//            } catch (InterruptedException iex) {
-//                iex.printStackTrace();
-//            }
+            try {
+                // airplane into time
+                TimeUnit.SECONDS.sleep(1);
+
+            } catch (InterruptedException iex) {
+                iex.printStackTrace();
+            }
         }
 
         Thread t1 = new Thread("notifyRunway") {
@@ -32,7 +32,7 @@ public class Main {
                 while (true) {
                     try {
                         // airplane into time
-                        Thread.sleep((long) (Math.random() * 20));
+                        Thread.sleep(1000);
                     } catch (InterruptedException iex) {
                         iex.printStackTrace();
                     }
@@ -58,7 +58,7 @@ public class Main {
                 while (true) {
                     try {
                         // airplane into time
-                        Thread.sleep((long) (Math.random() * 20));
+                        Thread.sleep(1000);
 
                     } catch (InterruptedException iex) {
                         iex.printStackTrace();

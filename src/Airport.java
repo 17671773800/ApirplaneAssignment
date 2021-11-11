@@ -2,6 +2,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Airport {
 
@@ -17,20 +18,25 @@ public class Airport {
 
 
     public void processInGate(Airplane airplane) {
-        System.out.println("Thread-ATC : "+getDate()+" Disembark passenger of Airplane : " + airplane.getNum());
-        System.out.println("Thread-ATC : "+getDate()+" Refill supplies and fuel of Airplane : " + airplane.getNum());
-        System.out.println("Thread-ATC : "+getDate()+" embark new passenger of Airplane : " + airplane.getNum());
-        System.out.println("---------------------------------------------------------------------------------------------------");
-        long duration = (long) (Math.random() * 60);
+        long duration = (long) (Math.random() * 2000);
 
-        try {
-            Thread.sleep(duration);
-        } catch (InterruptedException iex) {
-            iex.printStackTrace();
-        }
+        System.out.println("Thread-ATC : "+getDate()+" Disembark passenger of Airplane : " + airplane.getNum());
+        sleep(duration);
         System.out.println("Thread-ATC : "+getDate()+" Completed Disembark passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+
+        System.out.println("Thread-ATC : "+getDate()+" Refill supplies and fuel of Airplane : " + airplane.getNum());
+        duration = (long) (Math.random() * 2000);
+        sleep(duration);
         System.out.println("Thread-ATC : "+getDate()+" Completed Refill supplies of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+
+        System.out.println("Thread-ATC : "+getDate()+" embark new passenger of Airplane : " + airplane.getNum());
+        duration = (long) (Math.random() * 2000);
+        sleep(duration);
         System.out.println("Thread-ATC : "+getDate()+" Completed embark new passenger of Customer : " + airplane.getNum() + " in " + duration + " seconds.");
+
+        System.out.println("---------------------------------------------------------------------------------------------------");
+
+        sleep(1000);
 //        System.out.println("------------------------Customer exits from airplane " + airplane.getNum() + " ...");
 
         System.out.println("Thread-ATC : "+getDate()+(int)(Math.random() * 50)+"位乘客下了飞机");
@@ -59,11 +65,7 @@ public class Airport {
         System.out.println("Thread-ATC : "+getDate()+" Airplane : " + airplane.getNum() + " got the Gate. Gate(" + listAirplaneGate.size() + "/4)");
         listAirplaneRunway.remove(airplane);
 
-        try {
-            Thread.sleep((long) (Math.random() * 20));
-        } catch (InterruptedException iex) {
-            iex.printStackTrace();
-        }
+        sleep(1000);
 
         processInGate(airplane);
 
@@ -82,7 +84,7 @@ public class Airport {
 //                    }else if(listAirplaneRunway.size() >= 1 ){
 //                        System.out.println("The runway is occupied, Airplane : " + airplane.getNum() + " waiting for Runway.");
 //                    }
-                    System.out.println("ATC: Please Airplane " + airplane.getNum() +  "wait and join the circle queue. ");
+                    System.out.println("ATC: Please Airplane " + airplane.getNum() +  " wait and join the circle queue. ");
 
                     listAirplaneRunway.wait();
                 } catch (InterruptedException e) {
@@ -95,15 +97,10 @@ public class Airport {
 
         System.out.println("ATC: 允许Airplane "+ airplane.getNum() + "降落runway");
         listAirplaneRunway.add(airplane);
-
+        System.out.println("ATC: Airplane "+ airplane.getNum() + "降落runway成功!");
         listAirplane.remove(airplane);
 
-        try {
-            Thread.sleep((long) (Math.random() * 60));
-        } catch (InterruptedException iex) {
-            iex.printStackTrace();
-        }
-
+        sleep(1000);
         System.out.println("Thread-ATC : "+getDate()+" entering the runway -- Airplane : " + airplane.getNum() + "  at " + getDate());
 
 
@@ -135,12 +132,7 @@ public class Airport {
         listAirplaneRunway.remove(airplane);
         System.out.println("Thread-ATC : "+getDate()+" ---------The plane" + airplane.getNum() + " is left the runway success!----------");
 
-        try {
-            Thread.sleep((long) (Math.random() * 60));
-        } catch (InterruptedException iex) {
-            iex.printStackTrace();
-        }
-
+        sleep(1000);
     }
 
 
@@ -149,6 +141,14 @@ public class Airport {
         DateFormat df = DateFormat.getTimeInstance();
 
         return df.format(date);
+    }
+
+    public void sleep(long time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException iex) {
+            iex.printStackTrace();
+        }
     }
 
 }
