@@ -101,7 +101,7 @@ public class Airport {
 
     }
 
-    public void leaveRunway(Airplane airplane) {
+    public void leaveAirportFromRunway(Airplane airplane) {
 
         while (listAirplaneRunway.size() >= 1) {
 

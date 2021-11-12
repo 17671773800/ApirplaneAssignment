@@ -3,11 +3,11 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class Airplane implements Runnable {
-    int num;
+    private int num;
 
-    String type = "";
+    private String type = "";
 
-    Airport airport;
+    private Airport airport;
 
     public Airplane(Airport airport) {
         this.airport = airport;
@@ -41,7 +41,7 @@ public class Airplane implements Runnable {
 
         // airplane completed supply,airplane leave from the runway
         this.setType("completedSupply");
-        airport.leaveRunway(this);
+        airport.leaveAirportFromRunway(this);
 
     }
 
